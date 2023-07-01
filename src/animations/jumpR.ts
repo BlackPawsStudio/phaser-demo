@@ -1,8 +1,1 @@
-export const jumpR = [
-  { key: 'ball' },
-  { key: 'ballJump' },
-  {
-    key: 'ball',
-    duration: 50,
-  },
-];
+export const jumpR = [{ key: 'ballStatic2r' }, { key: 'ballJumpR', duration: 50 }];

@@ -1,15 +1,15 @@
 export const walkR = [
   {
-    key: 'ball',
+    key: 'ballr',
   },
   {
-    key: 'ballWalk1',
+    key: 'ballWalk1r',
   },
   {
-    key: 'ball',
+    key: 'ballr',
   },
   {
-    key: 'ballWalk2',
+    key: 'ballWalk2r',
     duration: 50,
   },
 ];

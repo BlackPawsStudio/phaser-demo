@@ -4,9 +4,12 @@ import { TestScene } from './TestScene';
 
 const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,
-  parent: 'app',
-  width: 1200,
-  height: 700,
+  scale: {
+    mode: Phaser.Scale.FIT,
+    parent: 'app',
+    width: 1200,
+    height: 600,
+  },
   physics: {
     default: 'arcade',
     arcade: {
