@@ -1,6 +1,10 @@
 import Phaser from 'phaser';
 import { Player } from './Player';
 
+const leftArrow = document.querySelector<HTMLButtonElement>('.left');
+const rightArrow = document.querySelector<HTMLButtonElement>('.right');
+const topArrow = document.querySelector<HTMLButtonElement>('.top');
+
 export class TestScene extends Phaser.Scene {
   private player: Player;
   private isPressed: {
@@ -80,6 +84,44 @@ export class TestScene extends Phaser.Scene {
       this.isPressed.left = false;
     });
     upButton.addListener('up', () => {
+      this.isPressed.up = false;
+    });
+
+    // Mobile controls
+    rightArrow?.addEventListener('touchstart', () => {
+      this.isPressed.right = true;
+      if (!this.player.isJumping) {
+        this.player.turnRight();
+        this.player.walk();
+      }
+    });
+
+    leftArrow?.addEventListener('touchstart', () => {
+      this.isPressed.left = true;
+      if (!this.player.isJumping) {
+        this.player.turnLeft();
+        this.player.walk();
+      }
+    });
+    topArrow?.addEventListener('touchstart', () => {
+      this.player.jump();
+      this.isPressed.up = true;
+      setTimeout(() => {
+        this.player.isJumping = true;
+        this.gravity = 10;
+        this.player.sprite?.setY(this.player.sprite?.y - this.gravity);
+      }, 500);
+    });
+
+    rightArrow?.addEventListener('touchend', () => {
+      this.player.stop();
+      this.isPressed.right = false;
+    });
+    leftArrow?.addEventListener('touchend', () => {
+      this.player.stop();
+      this.isPressed.left = false;
+    });
+    topArrow?.addEventListener('touchend', () => {
       this.isPressed.up = false;
     });
   }
